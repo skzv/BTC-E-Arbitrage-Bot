@@ -1,0 +1,2 @@
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+DLL Debug - DLL OpenSSL - DLL LibSSH2|Win32|C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\projects\Windows\VC14\|

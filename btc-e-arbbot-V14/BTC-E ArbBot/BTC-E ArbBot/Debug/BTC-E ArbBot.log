@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  BTC-E ArbBot.cpp
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\btc-e-arbbot-v14\btc-e arbbot\btc-e arbbot\hmac_sha512.hpp(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\btc-e-arbbot-v14\btc-e arbbot\btc-e arbbot\btc_api.hpp(44): warning C4244: '=': conversion from 'time_t' to 'unsigned long', possible loss of data
+  BTC-E ArbBot.vcxproj -> C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\btc-e-arbbot-V14\BTC-E ArbBot\Debug\BTC-E ArbBot.exe
+  BTC-E ArbBot.vcxproj -> C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\btc-e-arbbot-V14\BTC-E ArbBot\Debug\BTC-E ArbBot.pdb (Full PDB)

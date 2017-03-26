@@ -1,0 +1,171 @@
+﻿  vtls.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  schannel.c
+  polarssl_threadlock.c
+  polarssl.c
+  openssl.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  nss.c
+  mbedtls.c
+  gtls.c
+  gskit.c
+  darwinssl.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  cyassl.c
+  axtls.c
+  vauth.c
+  spnego_sspi.c
+  spnego_gssapi.c
+  oauth2.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  ntlm_sspi.c
+  ntlm.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  krb5_sspi.c
+  krb5_gssapi.c
+  Generating Code...
+  Compiling...
+  digest_sspi.c
+  digest.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  cram.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  cleartext.c
+C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  x509asn1.c
+  wildcard.c
+  warnless.c
+..\..\..\..\lib\warnless.c(188): warning C4310: cast truncates constant value
+..\..\..\..\lib\warnless.c(189): warning C4310: cast truncates constant value
+  version.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  url.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  transfer.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  timeval.c
+  tftp.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  telnet.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  system_win32.c
+  strtoofft.c
+  strtok.c
+  strerror.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  strdup.c
+  strcase.c
+  ssh.c
+..\..\..\..\lib\ssh.c(33): fatal error C1083: Cannot open include file: 'libssh2.h': No such file or directory
+  Generating Code...
+  Compiling...
+  splay.c
+  speedcheck.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  socks_sspi.c
+  socks_gssapi.c
+  socks.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  smtp.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  smb.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  slist.c
+  share.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  sendf.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  select.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  security.c
+  rtsp.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  rand.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  progress.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  pop3.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  pipeline.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  pingpong.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  parsedate.c
+  openldap.c
+  Generating Code...
+  Compiling...
+  nonblock.c
+  non-ascii.c
+  netrc.c
+  multi.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  mprintf.c
+  memdebug.c
+  md5.c
+..\..\..\..\lib\md5.c(88): fatal error C1083: Cannot open include file: 'openssl/md5.h': No such file or directory
+  md4.c
+  llist.c
+  ldap.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  krb5.c
+  inet_pton.c
+  inet_ntop.c
+  imap.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  if2ip.c
+  idn_win32.c
+  http_proxy.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  http_ntlm.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  http_negotiate.c
+  http_digest.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  Generating Code...
+  Compiling...
+  http_chunks.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  http.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  http2.c
+  hostsyn.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  hostip.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  hostip6.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  hostip4.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  hostcheck.c
+  hostasyn.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  hmac.c
+  hash.c
+  gopher.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  getinfo.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  getenv.c
+  ftplistparser.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  ftp.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  formdata.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  fileinfo.c
+  file.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  escape.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  Generating Code...
+  Compiling...
+  easy.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  dotdot.c
+  dict.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  curl_threads.c
+  curl_sspi.c
+  curl_sasl.c
+c:\users\alexander kuznetsov\documents\software development\currency exchange\src\curl-7.53.1\lib\urldata.h(86): fatal error C1083: Cannot open include file: 'openssl/ssl.h': No such file or directory
+  curl_rtmp.c
