@@ -69,9 +69,24 @@ public:
     ltc_rur(): pair("ltc_rur") {}
 };
 
+class ltc_eur : public pair {
+public:
+	ltc_eur() : pair("ltc_eur") {}
+};
+
 class nmc_btc: public pair {
 public:
     nmc_btc(): pair("nmc_btc") {}
+};
+
+class nmc_usd : public pair {
+public:
+	nmc_usd() : pair("nmc_usd") {}
+};
+
+class nvc_btc : public pair {
+public:
+	nvc_btc() : pair("nvc_btc") {}
 };
 
 class usd_rur: public pair {

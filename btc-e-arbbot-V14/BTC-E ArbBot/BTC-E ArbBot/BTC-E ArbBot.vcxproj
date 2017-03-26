@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\include;C:\OpenSSL-Win32\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\rapidjson-master\include;C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\include;C:\OpenSSL-Win32\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\curl-7.53.1\build\Win32\VC14\DLL Release - DLL OpenSSL;C:\OpenSSL-Win32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -148,10 +148,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BellmanFord.h" />
     <ClInclude Include="btc_api.hpp" />
     <ClInclude Include="curl_object.hpp" />
+    <ClInclude Include="getinfo.h" />
     <ClInclude Include="hmac_sha512.hpp" />
     <ClInclude Include="pairs.hpp" />
+    <ClInclude Include="split.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="uncopyable.hpp" />

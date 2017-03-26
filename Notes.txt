@@ -1,0 +1,21 @@
+http://stackoverflow.com/questions/20171165/getting-libcurl-to-work-with-visual-studio-2013
+Make sure you have the following files as addition input to the linker libcurl.lib;libeay32.lib;ssleay32.lib;Ws2_32.lib;libssh2.lib;zlib.lib;wldap32.lib;
+http://stackoverflow.com/questions/11383942/how-to-use-openssl-with-visual-studio
+
+http://slproweb.com/products/Win32OpenSSL.html
+Severity	Code	Description	Project	File	Line	Suppression State
+Error (active)	E0020	identifier "HMAC_CTX_init" is undefined	BTC-E ArbBot	c:\Users\Alexander Kuznetsov\Documents\Software Development\Currency Exchange\src\btc-e-arbbot\BTC-E ArbBot\BTC-E ArbBot\hmac_sha512.hpp	12	
+
+The OpenSSL documentation says that function HMAC_CTX_init() was replaced with HMAC_CTX_reset() but in OpenSSL versions 1.1.0.
+
+https://www.openssl.org/docs/manmaster/crypto/HMAC.html
+
+Open the file /usr/include/openssl/hmac.h and if you see HMAC_CTX_reset try to replace HMAC_CTX_init with HMAC_CTX_reset in these files:
+
+Problem: openssl 1.1.0 unstable! Use 1.0.2.
+
+use VS 2015
+
+http://stackoverflow.com/questions/21612132/unsupported-protocol-using-curl-in-c
+
+https://pranavprakash.net/2014/09/27/using-libcurl-with-ssl/

@@ -141,6 +141,13 @@ public:
         c.request(http::post());
         return c.get_response();
     }
+
+	json_data info() {
+		const url _url = "https://btc-e.com/api/3/info";
+		http::connection c(_url);
+		c.request(http::post());
+		return c.get_response();
+	}
     
     /**
      * @example : std::string response = btc_api_object.ticker(btc_e::btc_usd());
