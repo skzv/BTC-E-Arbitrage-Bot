@@ -35,7 +35,7 @@ std::vector<edge> createGraph(double** l, int N) {
 std::vector<int> solve(std::vector<edge>& e, int n, int m, int v)
 {
 	//n vertices and m edges  and some specified vertex v
-	std::vector<double> d(n, INF);
+	std::vector<double> d(n, 0);
 	std::vector<int> path;
 
 	d[v] = 0;
@@ -53,7 +53,6 @@ std::vector<int> solve(std::vector<edge>& e, int n, int m, int v)
 					x = e[j].b;
 				}
 	}
-
 	if (x == -1)
 		//std::cout << "No negative cycle from " << v;
 		;
