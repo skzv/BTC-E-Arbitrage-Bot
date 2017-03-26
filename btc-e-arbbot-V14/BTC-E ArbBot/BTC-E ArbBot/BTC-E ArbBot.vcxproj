@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BellmanFord.h" />
+    <ClInclude Include="bellmanford2.h" />
     <ClInclude Include="btc_api.hpp" />
     <ClInclude Include="curl_object.hpp" />
     <ClInclude Include="getinfo.h" />

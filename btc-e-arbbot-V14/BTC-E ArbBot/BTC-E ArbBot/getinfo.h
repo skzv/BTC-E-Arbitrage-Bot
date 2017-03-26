@@ -4,26 +4,24 @@
 
 #include <string>
 #include "http/connection.hpp"
-#include "rapidjson/document.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
 
 using url = std::string;
 using json_data = std::string;
-using namespace rapidjson;
 
 namespace btc_e {
 
 	class info {
 	public:
 		info() {
-			_parsed_data.Parse(_json_data.c_str());
+			http::connection c(geturl());
+			c.request(http::post());
+			_data = c.get_response();
 		}
-		json_data& get_json_data() { return _json_data; }
-		Document& get_parsed_data() { return _parsed_data; }
+		json_data getdata() { return _data; }
+		url geturl() { return _url; }
 	private:
-		json_data _json_data;
-		Document _parsed_data;
+		json_data _data;
+		const url _url = "https://btc-e.com/api/3/info";
 	};
 
 } // ns btc_e

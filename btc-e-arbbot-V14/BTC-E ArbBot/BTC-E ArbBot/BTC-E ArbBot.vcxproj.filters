@@ -48,6 +48,9 @@
     <ClInclude Include="split.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bellmanford2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

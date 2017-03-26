@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "btc_api.hpp"
 #include "BellmanFord.h"
+#include "bellmanford2.h"
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
@@ -27,6 +28,7 @@ int main()
 	
 	// Initialize currencies
 	std::map<std::string, int> currency_map;
+	std::map<int, std::string> reverse_currency_map;
 	// Initialize info
 	static const char* kTypeNames[] =
 	{ "Null", "False", "True", "Object", "Array", "String", "Number" };
@@ -48,6 +50,7 @@ int main()
 		for (auto i = cur_tokens.begin(); i != cur_tokens.end(); ++i) {
 			if (!currency_map.count((*i))) {
 				currency_map.insert(std::pair<std::string, int>((*i), count));
+				reverse_currency_map.insert(std::pair<int, std::string>(count,(*i)));
 				count++;
 			}
 		}
@@ -60,6 +63,7 @@ int main()
 
 	///* Let us create the graph */
 	int V = currency_map.size();  // Number of vertices in graph
+	int E = num_pairs;
 	double** w = new double*[V];
 	for (int i = 0; i < V; ++i)
 		w[i] = new double[V];
@@ -77,12 +81,14 @@ int main()
 	for (int k = 0; k < V; ++k)
 		for (int i = 0; i < V; ++i)
 			l[k][i] = DBL_MAX;
-	
-	//while (true) {
 
+	std::vector<edge> e;
+	
+	while (true) {
+		std::cout << "Polling" << std::endl;
+		e.clear();
 		for (Value::ConstMemberIterator itr = pairs.MemberBegin(); itr != pairs.MemberEnd(); ++itr)
 		{
-			num_pairs++;
 			currency_pair = itr->name.GetString();
 			const Value& pair_value = pairs[currency_pair.c_str()];
 			//get ticker
@@ -108,96 +114,81 @@ int main()
 			l[cur2_num][cur1_num] = -log(w[cur2_num][cur1_num]);
 			//printf("cur1: %d cur2: %d sell:%f buy:%f lns:%f lnb:%f\n", cur1_num, cur2_num, sell, buy, -log(sell*(1 - fee / 100)), -log(buy*(1 - fee / 100)));
 		}
-
-		// Calculate USD->LTC-BTC-USD
-		//printf("\nUSD->LTC->BTC->USD\n");
-		//float ulbu = w[1][4] * w[4][0] * w[0][1];
-		//printf("%f * %f * %f = %f\n", w[1][4], w[4][0], w[0][1], ulbu);
-		//float lulbu = l[1][4] + l[4][0] + l[0][1];
-		//float llulbu = -log(ulbu);
-		//printf("ulbu: %f lulbu: %f lllbu: %f\n", ulbu, lulbu, llulbu);
-
+		e = createGraph(l, V);
+		//perform bf
 		int src = 0;
-		printf("starting at %d\n", src);
+		double profit = 1;
+		std::vector<int> path = solve(e, V, E, src);
+		if (path.size() > 0) {
+			std::cout << "Opportunity!" << std::endl;
+			for (size_t i = 0; i < path.size(); ++i) {
+				std::cout << reverse_currency_map[path[i]];
+				if (i < path.size() - 1)
+					std::cout << " -> ";
+			}
+			std::cout << std::endl;
+			for (size_t i = 1; i < path.size(); ++i) {
+				profit *= w[path[i - 1]][path[i]];
+				std::cout << w[path[i-1]][path[i]];
+				if (i < path.size() - 1)
+					std::cout << " * ";
+			}
+			std::cout << " = " << profit;
+			std::cout << std::endl << std::endl;
+		}
+		//// Calculate USD->LTC-BTC-USD
+		//float ulbu = w[1][4] * w[4][0] * w[0][1];
+		////if (ulbu > 1) {
+		//	printf("\nUSD->LTC->BTC->USD\n");
+		//	printf("%f * %f * %f = %f\n", w[1][4], w[4][0], w[0][1], ulbu);
+		//	float lulbu = l[1][4] + l[4][0] + l[0][1];
+		//	float llulbu = -log(ulbu);
+		//	printf("ulbu: %f lulbu: %f lllbu: %f\n", ulbu, lulbu, llulbu);
+		////}
+		//int src = 0;
+		//printf("starting at %d\n", src);
 
-		//perform bellman ford
-		double* dis = new double[V];
-		int* pre = new int[V];
+		////perform bellman ford
+		//double* dis = new double[V];
+		//int* pre = new int[V];
 
-		for (int i = 0; i < V; ++i)
-			dis[i] = DBL_MAX, pre[i] = -1;
+		//for (int i = 0; i < V; ++i)
+		//	dis[i] = DBL_MAX, pre[i] = -1;
 
-		dis[src] = 0;
-
-		for (int k = 0; k < V; ++k)
-			for (int i = 0; i < V; ++i)
-				for (int j = 0; j < V; ++j)
-					if (dis[i] + l[i][j] < dis[j])
-						dis[j] = dis[i] + l[i][j], pre[j] = i;
+		//dis[src] = 0;
 
 		//for (int k = 0; k < V; ++k)
 		//	for (int i = 0; i < V; ++i)
-		//		if(w[k][i]!=DBL_MAX)
-		//			printf("w[%d][%d]=>%f\n",k,i,w[k][i]);
+		//		for (int j = 0; j < V; ++j)
+		//			if (dis[i] + l[i][j] < dis[j])
+		//				dis[j] = dis[i] + l[i][j], pre[j] = i;
 
-		for (int k = 0; k < V; ++k)
-			printf("j=> %d\t dist=> %f\n", k, dis[k]);
+		////for (int k = 0; k < V; ++k)
+		////	for (int i = 0; i < V; ++i)
+		////		if(w[k][i]!=DBL_MAX)
+		////			printf("w[%d][%d]=>%f\n",k,i,w[k][i]);
 
-		// check for negative cycles
-		for (int i = 0; i < V; ++i)
-			for (int j = 0; j < V; ++j)
-				if (dis[i] + l[i][j] < dis[j]) {
-					//printf("please dear jesus \n");
-					// Node j is part of a negative cycle
-					printf("Node %d is part of a negative cycle\n", j);
-				}
+		//for (int k = 0; k < V; ++k)
+		//	printf("j=> %d\t dist=> %f\n", k, dis[k]);
 
-		//You can then use the pre array to find the negative cycles.
-		// Start with pre[source] and work your way back.
+		//// check for negative cycles
+		//for (int i = 0; i < V; ++i)
+		//	for (int j = 0; j < V; ++j)
+		//		if (dis[i] + l[i][j] < dis[j]) {
+		//			//printf("please dear jesus \n");
+		//			// Node j is part of a negative cycle
+		//			printf("Node %d is part of a negative cycle\n", j);
+		//		}
 
-		for (int k = 0; k < V; ++k)
-			printf("pre[%d]=>%d\n", k, pre[k]);
+		////You can then use the pre array to find the negative cycles.
+		//// Start with pre[source] and work your way back.
+
+		//for (int k = 0; k < V; ++k)
+		//	printf("pre[%d]=>%d\n", k, pre[k]);
 
 		// start at src
-		std::vector<int> vector;
-		std::unordered_set<int> set;
-		float profit = 1;
-
-		int i = src;
-		while (true)
-		{
-			vector.push_back(i);
-			if (!set.count(i)) {
-				set.insert(i);
-			}
-			else {
-				// pop until we find i again
-				bool first = true;
-				int c;
-				int b;
-				while (vector.size() > 0) {
-					if (first)
-					{
-						b = vector.back();
-						first = false;
-					}
-					else {
-						c = b;
-						b = vector.back();
-						printf(" %d <- %d | ", c, b);
-						profit *= w[b][c];
-					}
-					//printf("*[ %d (%s) ] \t", b, "tst");
-					vector.pop_back();
-				}
-				break;
-			}
-			i = pre[i];
-		}
-
-		printf("\n\nprofit: %f", profit);
-		//Sleep(2 * 1000);
-	//}
+		Sleep(1 * 1000);
+	}
 
 	getchar();
 	return 0;
