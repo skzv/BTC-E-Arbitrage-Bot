@@ -158,6 +158,17 @@ public:
         return c.get_response();
     }
     
+	json_data all_ticker(const std::vector<btc_e::pair> ps) {
+		url _url =  "https://btc-e.com/api/3/ticker/";
+		for (auto& p : ps) {
+			_url.append(p.name() + "-");
+		}
+		_url.erase(_url.size() - 1);
+		http::connection c(_url);
+		c.request(http::post());
+		return c.get_response();
+	}
+
     /**
      * @example : std::string response = btc_api_object.trades(btc_e::btc_usd());
      **/

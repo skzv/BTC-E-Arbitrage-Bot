@@ -12,11 +12,10 @@ struct edge
 
 const double INF = DBL_MAX;
 
-std::vector<edge> createGraph(double** l, int N) {
-	std::vector<edge> e;
+void createGraph(double** l, int N, std::vector<edge>& e) {
 	for (int k = 0; k < N; ++k) {
 		for (int i = 0; i < N; ++i) {
-			struct edge *c = (struct edge*) malloc(sizeof(struct edge));
+			edge* c = (struct edge*) malloc(sizeof(struct edge));
 			//create edges
 			//l[cur1_num][cur2_num] = -log(w[cur1_num][cur2_num]);
 			//l[cur2_num][cur1_num] = -log(w[cur2_num][cur1_num]);
@@ -29,14 +28,19 @@ std::vector<edge> createGraph(double** l, int N) {
 			}
 		}
 	}
-	return e;
 }
 
-std::vector<int> solve(std::vector<edge>& e, int n, int m, int v)
+void destroyeGraph(std::vector<edge>& e) {
+	/*for (auto elem : e) {
+		delete &elem;
+	}*/
+	e.clear();
+}
+
+void solve(std::vector<edge>& e, int n, int m, int v, std::vector<int> path)
 {
 	//n vertices and m edges  and some specified vertex v
-	std::vector<double> d(n, 0);
-	std::vector<int> path;
+	std::vector<double> d(n, INF);
 
 	d[v] = 0;
 	std::vector<int> p(n);
@@ -74,5 +78,4 @@ std::vector<int> solve(std::vector<edge>& e, int n, int m, int v)
 		//for (size_t i = 0; i<path.size(); ++i)
 		//	std::cout << path[i] << ' ';
 	}
-	return path;
 }

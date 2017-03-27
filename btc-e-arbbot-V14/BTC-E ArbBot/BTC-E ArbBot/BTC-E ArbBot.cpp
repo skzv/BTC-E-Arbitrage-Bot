@@ -41,10 +41,16 @@ int main()
 	const char delim ='_';
 	int count = 0;
 	int num_pairs = 0;
+	int src = 0;
+	double profit = 1;
+	double fee = 0.2; // get this from json later
+	std::vector<int> path;
+	std::vector<btc_e::pair> all_currency_pairs;
 	for (Value::ConstMemberIterator itr = pairs.MemberBegin(); itr != pairs.MemberEnd(); ++itr)
 	{
 		num_pairs++;
 		currency_pair = itr->name.GetString();
+		all_currency_pairs.push_back(btc_e::pair(currency_pair));
 		// add currencies
 		cur_tokens = split(currency_pair, delim);
 		for (auto i = cur_tokens.begin(); i != cur_tokens.end(); ++i) {
@@ -83,22 +89,21 @@ int main()
 			l[k][i] = DBL_MAX;
 
 	std::vector<edge> e;
+	//get ticker
+	json_data ticker;
+	Document ticker_d;
 	
 	while (true) {
 		std::cout << "Polling" << std::endl;
-		e.clear();
-		for (Value::ConstMemberIterator itr = pairs.MemberBegin(); itr != pairs.MemberEnd(); ++itr)
+		// TODO: FIX memory leaks
+		ticker = api.all_ticker(all_currency_pairs);
+		ticker_d.Parse(ticker.c_str());
+		for (Value::ConstMemberIterator itr = ticker_d.MemberBegin(); itr != ticker_d.MemberEnd(); ++itr)
 		{
 			currency_pair = itr->name.GetString();
-			const Value& pair_value = pairs[currency_pair.c_str()];
-			//get ticker
-			json_data ticker = api.ticker(btc_e::pair(currency_pair));
-			Document t;
-			t.Parse(ticker.c_str());
-			Value& ticker_v = t["ticker"];
+			Value& ticker_v = ticker_d[currency_pair.c_str()];
 			double sell = ticker_v["sell"].GetDouble();
 			double buy = ticker_v["buy"].GetDouble();
-			double fee = pair_value["fee"].GetDouble();
 
 			// add currencies
 			cur_tokens = split(currency_pair, delim);
@@ -108,17 +113,17 @@ int main()
 			int cur2_num = currency_map[cur2];
 
 			w[cur1_num][cur2_num] = (sell*(1 - fee / 100));
-			w[cur2_num][cur1_num] = 1 / (buy*(1 - fee / 100));
+			w[cur2_num][cur1_num] = 1 / (buy)*(1 - fee / 100);
 			// transform
 			l[cur1_num][cur2_num] = -log(w[cur1_num][cur2_num]);
 			l[cur2_num][cur1_num] = -log(w[cur2_num][cur1_num]);
 			//printf("cur1: %d cur2: %d sell:%f buy:%f lns:%f lnb:%f\n", cur1_num, cur2_num, sell, buy, -log(sell*(1 - fee / 100)), -log(buy*(1 - fee / 100)));
 		}
-		e = createGraph(l, V);
+		destroyeGraph(e);
+		createGraph(l, V, e);
+		profit = 1;
 		//perform bf
-		int src = 0;
-		double profit = 1;
-		std::vector<int> path = solve(e, V, E, src);
+		solve(e, V, E, src, path);
 		if (path.size() > 0) {
 			std::cout << "Opportunity!" << std::endl;
 			for (size_t i = 0; i < path.size(); ++i) {
@@ -136,58 +141,7 @@ int main()
 			std::cout << " = " << profit;
 			std::cout << std::endl << std::endl;
 		}
-		//// Calculate USD->LTC-BTC-USD
-		//float ulbu = w[1][4] * w[4][0] * w[0][1];
-		////if (ulbu > 1) {
-		//	printf("\nUSD->LTC->BTC->USD\n");
-		//	printf("%f * %f * %f = %f\n", w[1][4], w[4][0], w[0][1], ulbu);
-		//	float lulbu = l[1][4] + l[4][0] + l[0][1];
-		//	float llulbu = -log(ulbu);
-		//	printf("ulbu: %f lulbu: %f lllbu: %f\n", ulbu, lulbu, llulbu);
-		////}
-		//int src = 0;
-		//printf("starting at %d\n", src);
-
-		////perform bellman ford
-		//double* dis = new double[V];
-		//int* pre = new int[V];
-
-		//for (int i = 0; i < V; ++i)
-		//	dis[i] = DBL_MAX, pre[i] = -1;
-
-		//dis[src] = 0;
-
-		//for (int k = 0; k < V; ++k)
-		//	for (int i = 0; i < V; ++i)
-		//		for (int j = 0; j < V; ++j)
-		//			if (dis[i] + l[i][j] < dis[j])
-		//				dis[j] = dis[i] + l[i][j], pre[j] = i;
-
-		////for (int k = 0; k < V; ++k)
-		////	for (int i = 0; i < V; ++i)
-		////		if(w[k][i]!=DBL_MAX)
-		////			printf("w[%d][%d]=>%f\n",k,i,w[k][i]);
-
-		//for (int k = 0; k < V; ++k)
-		//	printf("j=> %d\t dist=> %f\n", k, dis[k]);
-
-		//// check for negative cycles
-		//for (int i = 0; i < V; ++i)
-		//	for (int j = 0; j < V; ++j)
-		//		if (dis[i] + l[i][j] < dis[j]) {
-		//			//printf("please dear jesus \n");
-		//			// Node j is part of a negative cycle
-		//			printf("Node %d is part of a negative cycle\n", j);
-		//		}
-
-		////You can then use the pre array to find the negative cycles.
-		//// Start with pre[source] and work your way back.
-
-		//for (int k = 0; k < V; ++k)
-		//	printf("pre[%d]=>%d\n", k, pre[k]);
-
-		// start at src
-		Sleep(1 * 1000);
+		Sleep(1000);
 	}
 
 	getchar();
